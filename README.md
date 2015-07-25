@@ -3,8 +3,8 @@
 Wanna build a really, really slim Play project?
 
 This project demonstrates how you can easily build a non-blocking, threadsafe, and fast Play app without having to
-use the default `routes` file. This is familiar territory for people who are used to the simplicity of Sinatra/Bottle but
-want to take advantage of Scala's concurrent, type-safe and scalable nature.
+use the default `routes` file. The end-result should be familiar territory for people who are used to the simplicity of Sinatra/Bottle
+but want to take advantage of Scala's concurrent, type-safe and scalable nature.
 
 ### How to run
 
@@ -42,7 +42,7 @@ All I did was:
 
 4. Add `play.application.loader=AppLoader` to `./conf/application.conf` so that Play knows to load our custom app (that
   contains our simple router)
-  
+
 ### More info
 
 The following links may be useful for further understanding on what is happening here:
