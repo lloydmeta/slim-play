@@ -11,7 +11,7 @@ want to take advantage of Scala's concurrent, type-safe and scalable nature.
 1. Git clone this project
 2. `./activator run` from the checked-out project's root directory
 3. Open a browser and hit:
-  - [Hello $name endpoint](http://localhost:9000/hello/smarty-pants)
+  - [Hello $name endpoint](http://localhost:9000/hello/beachape)
   - [Async Sqrt calculator](http://localhost:9000/sqrt/1764)
 
 ### How it was built
@@ -19,25 +19,25 @@ want to take advantage of Scala's concurrent, type-safe and scalable nature.
 All I did was:
 
 1. Use activator to generate new template (`$ activator new simple-play play-scala`)
-2. Delete the auto-generated controller and view directories (won't be using them)
+2. Delete the auto-generated controller, public, and view directories (won't be using them)
 3. Create a `SimpleApp.scala` file in the `./app` directory, which holds an ApplicationLoader and the router, which is
   super simple:
 
-  ```
-val router = Router.from {
-  case GET(p"/hello/$to") => Action {
-    Ok(s"Hello $to")
-  }
-  /*
-   Use Action.async to return a Future result (sqrt can be intense :P)
-   Note the use of double(num) to bind only numbers (built-in :)
-   */
-  case GET(p"/sqrt/${double(num)}") => Action.async {
-    Future {
-      Ok(Math.sqrt(num).toString)
+  ```scala
+  val router = Router.from {
+    case GET(p"/hello/$to") => Action {
+      Ok(s"Hello $to")
+    }
+    /*
+     Use Action.async to return a Future result (sqrt can be intense :P)
+     Note the use of double(num) to bind only numbers (built-in :)
+     */
+    case GET(p"/sqrt/${double(num)}") => Action.async {
+      Future {
+        Ok(Math.sqrt(num).toString)
+      }
     }
   }
-}
   ```
 
 4. Add `play.application.loader=SimpleApp` to `./conf/application.conf` so that Play knows to load our custom app (that
