@@ -3,7 +3,7 @@
 Wanna build a really, really slim Play project?
 
 This project demonstrates how you can easily build a non-blocking, threadsafe, and fast Play app without having to
-use the default `routes` file. This is familiar territory for people who want the simplicity of Sinatra/Bottle but
+use the default `routes` file. This is familiar territory for people who are used to the simplicity of Sinatra/Bottle but
 want to take advantage of Scala's concurrent, type-safe and scalable nature.
 
 ### How to run
@@ -18,9 +18,9 @@ want to take advantage of Scala's concurrent, type-safe and scalable nature.
 
 All I did was:
 
-1. Use activator to generate new template (`$ activator new simple-play play-scala`)
+1. Use activator to generate a new Play app (`$ activator new slim-play play-scala`)
 2. Delete the auto-generated controller, public, and view directories (won't be using them)
-3. Create a `SimpleApp.scala` file in the `./app` directory, which holds an ApplicationLoader and the router, which is
+3. Create a `AppLoader.scala` file in the `./app` directory, which holds an ApplicationLoader and the router, which is
   super simple:
 
   ```scala
@@ -40,8 +40,16 @@ All I did was:
   }
   ```
 
-4. Add `play.application.loader=SimpleApp` to `./conf/application.conf` so that Play knows to load our custom app (that
-  contains our simple routes)
+4. Add `play.application.loader=AppLoader` to `./conf/application.conf` so that Play knows to load our custom app (that
+  contains our simple router)
+  
+### More info
+
+The following links may be useful for further understanding on what is happening here:
+
+1. Official Play docs on [String Interpolating Routing DSL](https://www.playframework.com/documentation/2.4.x/ScalaSirdRouter)
+2. Official Play docs on [Compile-time dependency injection](https://www.playframework.com/documentation/2.4.x/ScalaCompileTimeDependencyInjection)
+
 
 ## Licence
 
