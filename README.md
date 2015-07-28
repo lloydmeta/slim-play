@@ -14,8 +14,8 @@ For [Giter8](https://github.com/n8han/giter8): `$ g8 lloydmeta/slim-play`
 
 ### How to run
 
-1. Git clone this project
-2. `./activator run` from the checked-out project's root directory
+1. Git clone this project or use [a template](#templates)
+2. `./activator run` from the project's root directory
 3. Open a browser and hit:
   - [Hello $name endpoint](http://localhost:9000/hello/beachape)
   - [Async Sqrt calculator](http://localhost:9000/sqrt/1764)
