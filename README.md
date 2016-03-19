@@ -6,10 +6,16 @@ This project demonstrates how you can easily build a non-blocking, threadsafe, a
 use the default `routes` file. The end-result should be familiar territory for people who are used to the simplicity of Sinatra/Bottle
 but want to take advantage of Scala's concurrent, type-safe and scalable nature.
 
+### Templates
+
+For [Typesafe activator](https://www.typesafe.com/activator/templates): `$ activator new my-slim-project slim-play-scala`
+
+For [Giter8](https://github.com/n8han/giter8): `$ g8 lloydmeta/slim-play`
+
 ### How to run
 
-1. Git clone this project
-2. `./activator run` from the checked-out project's root directory
+1. Git clone this project or use [a template](#templates)
+2. `./activator run` from the project's root directory
 3. Open a browser and hit:
   - [Hello $name endpoint](http://localhost:9000/hello/beachape)
   - [Async Sqrt calculator](http://localhost:9000/sqrt/1764)
