@@ -1,4 +1,4 @@
-## Slim Play App
+## Slim Play App [![Build Status](https://travis-ci.org/lloydmeta/slim-play.svg?branch=master)](https://travis-ci.org/lloydmeta/slim-play)
 
 Wanna build a really, really slim Play project?
 
