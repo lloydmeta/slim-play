@@ -1,6 +1,6 @@
 package helpers
 
-import org.scalatest.{Suite, TestData}
+import org.scalatest.{TestSuite, TestData}
 import org.scalatestplus.play.{OneAppPerSuite, OneAppPerTest, OneServerPerSuite, OneServerPerTest}
 import play.api.{BuiltInComponents, _}
 import play.api.ApplicationLoader.Context
@@ -13,7 +13,7 @@ import play.api._
 trait OneAppPerTestWithComponents[T <: BuiltInComponents]
   extends OneAppPerTest
     with WithApplicationComponents[T] {
-  this: Suite =>
+  this: TestSuite =>
 
   override def newAppForTest(testData: TestData): Application = newApplication
 }
@@ -21,14 +21,14 @@ trait OneAppPerTestWithComponents[T <: BuiltInComponents]
 trait OneAppPerSuiteWithComponents[T <: BuiltInComponents]
   extends OneAppPerSuite
     with WithApplicationComponents[T] {
-  this: Suite =>
+  this: TestSuite =>
   override implicit lazy val app: Application = newApplication
 }
 
 trait OneServerPerTestWithComponents[T <: BuiltInComponents]
   extends OneServerPerTest
     with WithApplicationComponents[T] {
-  this: Suite =>
+  this: TestSuite =>
 
   override def newAppForTest(testData: TestData): Application = newApplication
 }
@@ -36,7 +36,7 @@ trait OneServerPerTestWithComponents[T <: BuiltInComponents]
 trait OneServerPerSuiteWithComponents[T <: BuiltInComponents]
   extends OneServerPerSuite
     with WithApplicationComponents[T] {
-  this: Suite =>
+  this: TestSuite =>
 
   override implicit lazy val app: Application = newApplication
 }

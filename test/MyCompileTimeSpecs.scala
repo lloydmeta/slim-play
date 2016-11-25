@@ -1,5 +1,5 @@
 import helpers.{OneAppPerSuiteWithComponents, OneAppPerTestWithComponents, OneServerPerSuiteWithComponents, OneServerPerTestWithComponents}
-import org.scalatest.Suite
+import org.scalatest.TestSuite
 import play.api.ApplicationLoader.Context
 import play.api.libs.ws.ahc.AhcWSComponents
 
@@ -7,28 +7,28 @@ class AppWithTestComponents(context: Context) extends AppComponents(context) wit
 
 trait OneAppPerTestWithMyComponents
   extends OneAppPerTestWithComponents[AppWithTestComponents] {
-  this: Suite =>
+  this: TestSuite =>
 
   override def createComponents(context: Context) = new AppWithTestComponents(context)
 }
 
 trait OneAppPerSuiteWithMyComponents
   extends OneAppPerSuiteWithComponents[AppWithTestComponents] {
-  this: Suite =>
+  this: TestSuite =>
 
   override def createComponents(context: Context) = new AppWithTestComponents(context)
 }
 
 trait OneServerPerTestWithMyComponents
   extends OneServerPerTestWithComponents[AppWithTestComponents] {
-  this: Suite =>
+  this: TestSuite =>
 
   override def createComponents(context: Context) = new AppWithTestComponents(context)
 }
 
 trait OneServerPerSuiteWithMyComponents
   extends OneServerPerSuiteWithComponents[AppWithTestComponents] {
-  this: Suite =>
+  this: TestSuite =>
 
   override def createComponents(context: Context) = new AppWithTestComponents(context)
 }
