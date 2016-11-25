@@ -8,31 +8,29 @@ import play.api.routing.sird._
 
 import scala.concurrent.Future
 
-class AppLoader extends ApplicationLoader {
+class AppComponents(context: Context) extends BuiltInComponentsFromContext(context) {
 
-  def load(context: Context) = new BuiltInComponentsFromContext(context) {
+  val router: Router = Router.from {
 
-    /**
-     * Simple & fairly self-explanatory router
-     */
-    val router = Router.from {
-
-      // Essentially copied verbatim from the SIRD example
-      case GET(p"/hello/$to") => Action {
-        Ok(s"Hello $to")
-      }
-
-      /*
-       Use Action.async to return a Future result (sqrt can be intense :P)
-       Note the use of double(num) to bind only numbers (built-in :)
-        */
-      case GET(p"/sqrt/${double(num)}") => Action.async {
-        Future {
-          Ok(Math.sqrt(num).toString)
-        }
-      }
-
+    // Essentially copied verbatim from the SIRD example
+    case GET(p"/hello/$to") => Action {
+      Ok(s"Hello $to")
     }
-  }.application
 
+    /*
+     Use Action.async to return a Future result (sqrt can be intense :P)
+     Note the use of double(num) to bind only numbers (built-in :)
+      */
+    case GET(p"/sqrt/${double(num)}") => Action.async {
+      Future {
+        Ok(Math.sqrt(num).toString)
+      }
+    }
+
+  }
+
+}
+
+class AppLoader extends ApplicationLoader {
+  def load(context: Context) = new AppComponents(context).application
 }
