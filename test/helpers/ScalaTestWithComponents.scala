@@ -1,7 +1,7 @@
 package helpers
 
-import org.scalatest.{TestSuite, TestData}
-import org.scalatestplus.play.{OneAppPerSuite, OneAppPerTest, OneServerPerSuite, OneServerPerTest}
+import org.scalatest.TestSuite
+import org.scalatestplus.play._
 import play.api.{BuiltInComponents, _}
 import play.api.ApplicationLoader.Context
 import play.api._
@@ -11,34 +11,33 @@ import play.api._
   */
 
 trait OneAppPerTestWithComponents[T <: BuiltInComponents]
-  extends OneAppPerTest
+  extends BaseOneAppPerTest
+    with FakeApplicationFactory
     with WithApplicationComponents[T] {
   this: TestSuite =>
-
-  override def newAppForTest(testData: TestData): Application = newApplication
 }
 
 trait OneAppPerSuiteWithComponents[T <: BuiltInComponents]
-  extends OneAppPerSuite
+  extends BaseOneAppPerSuite
+    with FakeApplicationFactory
     with WithApplicationComponents[T] {
   this: TestSuite =>
-  override implicit lazy val app: Application = newApplication
 }
 
 trait OneServerPerTestWithComponents[T <: BuiltInComponents]
-  extends OneServerPerTest
+  extends BaseOneServerPerTest
+    with FakeApplicationFactory
     with WithApplicationComponents[T] {
   this: TestSuite =>
 
-  override def newAppForTest(testData: TestData): Application = newApplication
 }
 
 trait OneServerPerSuiteWithComponents[T <: BuiltInComponents]
-  extends OneServerPerSuite
+  extends BaseOneServerPerSuite
+    with FakeApplicationFactory
     with WithApplicationComponents[T] {
   this: TestSuite =>
 
-  override implicit lazy val app: Application = newApplication
 }
 
 
@@ -52,7 +51,7 @@ trait WithApplicationComponents[T <: BuiltInComponents] {
   def createComponents(context: Context): T
 
   // creates a new application and sets the components
-  def newApplication: Application = {
+  def fakeApplication(): Application = {
     _components = createComponents(context)
     _components.application
   }
