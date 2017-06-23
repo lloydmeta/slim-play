@@ -9,37 +9,31 @@ import play.api._
 /**
   * Taken from https://github.com/playframework/play-scala-compile-di-with-tests
   */
-
 trait OneAppPerTestWithComponents[T <: BuiltInComponents]
-  extends BaseOneAppPerTest
+    extends BaseOneAppPerTest
     with FakeApplicationFactory
-    with WithApplicationComponents[T] {
-  this: TestSuite =>
+    with WithApplicationComponents[T] { this: TestSuite =>
 }
 
 trait OneAppPerSuiteWithComponents[T <: BuiltInComponents]
-  extends BaseOneAppPerSuite
+    extends BaseOneAppPerSuite
     with FakeApplicationFactory
-    with WithApplicationComponents[T] {
-  this: TestSuite =>
+    with WithApplicationComponents[T] { this: TestSuite =>
 }
 
 trait OneServerPerTestWithComponents[T <: BuiltInComponents]
-  extends BaseOneServerPerTest
+    extends BaseOneServerPerTest
     with FakeApplicationFactory
-    with WithApplicationComponents[T] {
-  this: TestSuite =>
+    with WithApplicationComponents[T] { this: TestSuite =>
 
 }
 
 trait OneServerPerSuiteWithComponents[T <: BuiltInComponents]
-  extends BaseOneServerPerSuite
+    extends BaseOneServerPerSuite
     with FakeApplicationFactory
-    with WithApplicationComponents[T] {
-  this: TestSuite =>
+    with WithApplicationComponents[T] { this: TestSuite =>
 
 }
-
 
 trait WithApplicationComponents[T <: BuiltInComponents] {
   private var _components: T = _
@@ -58,7 +52,7 @@ trait WithApplicationComponents[T <: BuiltInComponents] {
 
   def context: ApplicationLoader.Context = {
     val classLoader = ApplicationLoader.getClass.getClassLoader
-    val env = new Environment(new java.io.File("."), classLoader, Mode.Test)
+    val env         = new Environment(new java.io.File("."), classLoader, Mode.Test)
     ApplicationLoader.createContext(env)
   }
 }
