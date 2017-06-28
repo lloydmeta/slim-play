@@ -10,8 +10,6 @@ but want to take advantage of Scala's concurrent, type-safe and scalable nature.
 
 In case you want to get up and running right away, use the following Slim-Play templates:
 
-For [Typesafe activator](https://www.typesafe.com/activator/templates): `$ activator new my-slim-project slim-play-scala`
-
 For [Giter8](https://github.com/n8han/giter8): `$ g8 lloydmeta/slim-play`
 
 ### How to run
