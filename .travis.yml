@@ -6,11 +6,11 @@ jdk:
   - oraclejdk8
 
 scala:
-  - 2.12.2
+  - 2.13.1
 
 cache:
   directories:
-  - $HOME/.sbt/0.13
+  - $HOME/.sbt/1.0
   - $HOME/.sbt/boot/scala*
   - $HOME/.sbt/cache
   - $HOME/.sbt/launchers
