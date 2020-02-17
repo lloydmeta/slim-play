@@ -51,8 +51,9 @@ trait WithApplicationComponents[T <: BuiltInComponents] {
   }
 
   def context: ApplicationLoader.Context = {
-    val classLoader = ApplicationLoader.getClass.getClassLoader
-    val env         = new Environment(new java.io.File("."), classLoader, Mode.Test)
-    ApplicationLoader.createContext(env)
+    val classLoader     = ApplicationLoader.getClass.getClassLoader
+    val env             = new Environment(new java.io.File("."), classLoader, Mode.Test)
+    val initialSettings = Map.empty[String, AnyRef]
+    ApplicationLoader.Context.create(env, initialSettings)
   }
 }
