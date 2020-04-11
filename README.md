@@ -15,7 +15,7 @@ For [Giter8](https://github.com/n8han/giter8): `$ g8 lloydmeta/slim-play`
 ### How to run
 
 1. Git clone this project or use [a template](#templates)
-2. `./activator run` from the project's root directory
+2. `sbt run` from the project's root directory
 3. Open a browser and hit:
   - [Hello $name endpoint](http://localhost:9000/hello/beachape)
   - [Async Sqrt calculator](http://localhost:9000/sqrt/1764)
@@ -24,7 +24,7 @@ For [Giter8](https://github.com/n8han/giter8): `$ g8 lloydmeta/slim-play`
 
 All I did was:
 
-1. Use activator to generate a new Play app (`$ activator new slim-play play-scala`)
+1. Use `sbt new` to generate a new Play app (`$ sbt new playframework/play-scala-seed.g8 --name=slim-play`)
 2. Delete the auto-generated controller, public, and view directories (won't be using them)
 3. Create a `AppLoader.scala` file in the `./app` directory, which holds an ApplicationLoader and the router, which is
   super simple:
